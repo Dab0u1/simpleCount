@@ -189,7 +189,7 @@ public class makeWin extends JFrame {
 			value = compteur;
 			compteur = 0;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.toString(value);
 			label.setText(Res);
 		}
 	}
