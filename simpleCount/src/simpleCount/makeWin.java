@@ -2,21 +2,16 @@ package simpleCount;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class makeWin extends JFrame {
 	/**
@@ -44,17 +39,14 @@ public class makeWin extends JFrame {
 	private JButton buttdot = new JButton(".");
 	private JButton buttequal = new JButton("=");
 	private JButton buttreset = new JButton("CE");
-	private float value;
+	private float value = 0;
 	private boolean plus = false;
 	private boolean minus = false;
 	private boolean mult = false;
 	private boolean div = false;
 	private boolean mod = false;
-	private boolean equal = false;
-	// private boolean minus;
 	private JPanel container = new JPanel();
 	private JLabel label = new JLabel("0");
-	private JTextField text = new JTextField();
 	private float compteur = 0;
 
 	public makeWin() {
@@ -209,24 +201,29 @@ public class makeWin extends JFrame {
 			if (plus == true) {
 				value = value + compteur;
 				plus = false;
-			}
-			else if (minus == true) {
+			} else if (minus == true) {
 				value = value - compteur;
 				minus = false;
-			}
-			else if (mult == true) {
+			} else if (mult == true) {
 				value = value * compteur;
 				mult = false;
-			}
-			else if (div == true && compteur != 0) {
+			} else if (div == true) {
+				if (compteur == 0) {
+					label.setText("Div par zéro impossible");
+					div = false;
+					return;
+				}
 				value = value / compteur;
 				div = false;
-			}
-			else if (mod == true && compteur != 0) {
+			} else if (mod == true) {
+				if (compteur == 0) {
+					label.setText("Modulo par zéro impossible");
+					mod = false;
+					return;
+				}
 				value = value % compteur;
 				mod = false;
-			}
-			else
+			} else
 				value = compteur;
 			Res = Float.toString(value);
 			compteur = value;
