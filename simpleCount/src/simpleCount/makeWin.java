@@ -121,8 +121,9 @@ public class makeWin extends JFrame {
 			}
 			plus = true;
 			value = compteur;
+			compteur = 0;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.toString(value);
 			label.setText(Res);
 		}
 	}
@@ -138,8 +139,9 @@ public class makeWin extends JFrame {
 			}
 			minus = true;
 			value = compteur;
+			compteur = 0;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.toString(value);
 			label.setText(Res);
 		}
 	}
@@ -156,7 +158,7 @@ public class makeWin extends JFrame {
 			mult = true;
 			value = compteur;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.toString(value);
 			label.setText(Res);
 		}
 	}
@@ -172,8 +174,9 @@ public class makeWin extends JFrame {
 			}
 			div = true;
 			value = compteur;
+			compteur = 0;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.toString(value);
 			label.setText(Res);
 		}
 	}
@@ -189,6 +192,7 @@ public class makeWin extends JFrame {
 			}
 			mod = true;
 			value = compteur;
+			compteur = 0;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -220,6 +224,7 @@ public class makeWin extends JFrame {
 				mod = false;
 			}
 			Res = Float.toString(value);
+			compteur = value;
 			label.setText(Res);
 		}
 	}
@@ -236,7 +241,9 @@ public class makeWin extends JFrame {
 	public class nbButt0 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-			compteur = 0;
+			if (compteur != 0)
+				compteur = compteur * 10;
+			compteur += 0;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -246,6 +253,11 @@ public class makeWin extends JFrame {
 	public class nbButt1 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 1;
+			}
+			else
 			compteur = 1;
 			String Res;
 			Res = Float.toString(compteur);
@@ -256,6 +268,11 @@ public class makeWin extends JFrame {
 	public class nbButt2 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 2;
+			}
+			else
 			compteur = 2;
 			String Res;
 			Res = Float.toString(compteur);
@@ -266,6 +283,11 @@ public class makeWin extends JFrame {
 	public class nbButt3 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 3;
+			}
+			else
 			compteur = 3;
 			String Res;
 			Res = Float.toString(compteur);
@@ -276,6 +298,11 @@ public class makeWin extends JFrame {
 	public class nbButt4 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 4;
+			}
+			else
 			compteur = 4;
 			String Res;
 			Res = Float.toString(compteur);
@@ -286,6 +313,11 @@ public class makeWin extends JFrame {
 	public class nbButt5 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 5;
+			}
+			else
 			compteur = 5;
 			String Res;
 			Res = Float.toString(compteur);
@@ -296,6 +328,11 @@ public class makeWin extends JFrame {
 	public class nbButt6 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 6;
+			}
+			else
 			compteur = 6;
 			String Res;
 			Res = Float.toString(compteur);
@@ -306,6 +343,11 @@ public class makeWin extends JFrame {
 	public class nbButt7 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 7;
+			}
+			else
 			compteur = 7;
 			String Res;
 			Res = Float.toString(compteur);
@@ -316,6 +358,11 @@ public class makeWin extends JFrame {
 	public class nbButt8 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 8;
+			}
+			else
 			compteur = 8;
 			String Res;
 			Res = Float.toString(compteur);
@@ -326,6 +373,11 @@ public class makeWin extends JFrame {
 	public class nbButt9 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			if (compteur != 0) {
+				compteur = compteur * 10;
+				compteur += 9;
+			}
+			else
 			compteur = 9;
 			String Res;
 			Res = Float.toString(compteur);
