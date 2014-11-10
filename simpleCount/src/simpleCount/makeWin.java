@@ -43,6 +43,7 @@ public class makeWin extends JFrame {
 	private JButton butt9 = new JButton("9");
 	private JButton buttdot = new JButton(".");
 	private JButton buttequal = new JButton("=");
+	private JButton buttreset = new JButton("CE");
 	private float value;
 	private boolean plus = false;
 	private boolean minus = false;
@@ -85,6 +86,7 @@ public class makeWin extends JFrame {
 		buttmult.addActionListener(new multButt());
 		buttminus.addActionListener(new rmButt());
 		buttplus.addActionListener(new addButt());
+		buttreset.addActionListener(new resButt());
 		container.add(butt7);
 		container.add(butt8);
 		container.add(butt9);
@@ -102,6 +104,7 @@ public class makeWin extends JFrame {
 		container.add(buttmod);
 		container.add(buttminus);
 		container.add(buttplus);
+		container.add(buttreset);
 		total.setLayout(new BoxLayout(total, BoxLayout.PAGE_AXIS));
 		total.add(result);
 		total.add(container);
@@ -233,6 +236,17 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			String Res;
+			Res = Float.toString(compteur);
+			label.setText(Res);
+		}
+	}
+
+	public class resButt implements ActionListener {
+
+		public void actionPerformed(ActionEvent arg0) {
+			String Res;
+			compteur = 0;
+			value = 0;
 			Res = Float.toString(compteur);
 			label.setText(Res);
 		}
