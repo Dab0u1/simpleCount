@@ -8,7 +8,11 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class makeButt extends Button implements MouseListener{
+public class makeButt extends Button implements MouseListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 
 	public makeButt(String str) {
