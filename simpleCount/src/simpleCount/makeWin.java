@@ -51,7 +51,7 @@ public class makeWin extends JFrame {
 	private boolean div = false;
 	private boolean mod = false;
 	private boolean equal = false;
-	//private boolean minus;
+	// private boolean minus;
 	private JPanel container = new JPanel();
 	private JLabel label = new JLabel("0");
 	private JTextField text = new JTextField();
@@ -68,7 +68,7 @@ public class makeWin extends JFrame {
 		label.setHorizontalAlignment(JLabel.CENTER);
 		result.setLayout(new BorderLayout());
 		result.add(label, BorderLayout.CENTER);
-		container.setLayout(new GridLayout(6,3));
+		container.setLayout(new GridLayout(6, 3));
 		butt0.addActionListener(new nbButt0());
 		butt1.addActionListener(new nbButt1());
 		butt2.addActionListener(new nbButt2());
@@ -210,22 +210,24 @@ public class makeWin extends JFrame {
 				value = value + compteur;
 				plus = false;
 			}
-			if (minus == true) {
+			else if (minus == true) {
 				value = value - compteur;
 				minus = false;
 			}
-			if (mult == true) {
+			else if (mult == true) {
 				value = value * compteur;
 				mult = false;
 			}
-			if (div == true && compteur != 0) {
+			else if (div == true && compteur != 0) {
 				value = value / compteur;
 				div = false;
 			}
-			if (mod == true && compteur != 0) {
+			else if (mod == true && compteur != 0) {
 				value = value % compteur;
 				mod = false;
 			}
+			else
+				value = compteur;
 			Res = Float.toString(value);
 			compteur = value;
 			label.setText(Res);
@@ -244,6 +246,11 @@ public class makeWin extends JFrame {
 	public class resButt implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			plus = false;
+			minus = false;
+			mod = false;
+			div = false;
+			mult = false;
 			String Res;
 			compteur = 0;
 			value = 0;
@@ -270,9 +277,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 1;
-			}
-			else
-			compteur = 1;
+			} else
+				compteur = 1;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -285,9 +291,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 2;
-			}
-			else
-			compteur = 2;
+			} else
+				compteur = 2;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -300,9 +305,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 3;
-			}
-			else
-			compteur = 3;
+			} else
+				compteur = 3;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -315,9 +319,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 4;
-			}
-			else
-			compteur = 4;
+			} else
+				compteur = 4;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -330,9 +333,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 5;
-			}
-			else
-			compteur = 5;
+			} else
+				compteur = 5;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -345,9 +347,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 6;
-			}
-			else
-			compteur = 6;
+			} else
+				compteur = 6;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -360,9 +361,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 7;
-			}
-			else
-			compteur = 7;
+			} else
+				compteur = 7;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -375,9 +375,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 8;
-			}
-			else
-			compteur = 8;
+			} else
+				compteur = 8;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -390,9 +389,8 @@ public class makeWin extends JFrame {
 			if (compteur != 0) {
 				compteur = compteur * 10;
 				compteur += 9;
-			}
-			else
-			compteur = 9;
+			} else
+				compteur = 9;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
