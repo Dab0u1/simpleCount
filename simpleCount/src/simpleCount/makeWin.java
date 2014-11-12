@@ -23,6 +23,7 @@ public class makeWin extends JFrame {
 	private JPanel total = new JPanel();
 	private JPanel container = new JPanel();
 	private JLabel label = new JLabel("0");
+	private JLabel labelhis = new JLabel("");
 	private JButton buttminus = new JButton("-");
 	private JButton buttplus = new JButton("+");
 	private JButton buttmult = new JButton("*");
@@ -41,6 +42,10 @@ public class makeWin extends JFrame {
 	private JButton buttdot = new JButton(".");
 	private JButton buttequal = new JButton("=");
 	private JButton buttreset = new JButton("CE");
+	private String sign = "";
+	private String history = "";
+	private String historytmp = "";
+	private String historyfin = "";
 	private float value = 0;
 	private float compteur = 0;
 	private int aft = 1;
@@ -50,17 +55,23 @@ public class makeWin extends JFrame {
 	private boolean mult = false;
 	private boolean div = false;
 	private boolean mod = false;
+	private boolean lastnb = true;
 
 	public makeWin() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("simpleCount");
 		this.setSize(300, 300);
 		this.setLocationRelativeTo(null);
-		Font police = new Font("Tahoma", Font.BOLD, 16);
-		label.setFont(police);
+		// Font policehis = new Font("Tahoma", Font.BOLD, 6);
+		// labelhis.setFont(policehis);
+		// labelhis.setForeground(Color.BLUE);
+		// labelhis.setHorizontalAlignment(JLabel.EAST);
+		Font policelab = new Font("Tahoma", Font.BOLD, 16);
+		label.setFont(policelab);
 		label.setForeground(Color.BLUE);
 		label.setHorizontalAlignment(JLabel.CENTER);
-		result.setLayout(new BorderLayout());
+		result.setLayout(new GridLayout(3, 1));
+		result.add(labelhis, BorderLayout.EAST);
 		result.add(label, BorderLayout.CENTER);
 		container.setLayout(new GridLayout(6, 3));
 		butt0.addActionListener(new nbButt0());
@@ -117,12 +128,18 @@ public class makeWin extends JFrame {
 				div = false;
 			}
 			plus = true;
-			value = compteur;
+			dot = false;
+			if (lastnb = true)
+				value = compteur;
 			compteur = 0;
 			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
+			sign = " + ";
+			historytmp = history + sign;
+			labelhis.setText(historytmp);
+			lastnb = false;
 		}
 	}
 
@@ -136,12 +153,18 @@ public class makeWin extends JFrame {
 				div = false;
 			}
 			minus = true;
-			value = compteur;
+			dot = false;
+			if (lastnb = true)
+				value = compteur;
 			compteur = 0;
 			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
+			sign = " - ";
+			historytmp = history + sign;
+			labelhis.setText(historytmp);
+			lastnb = false;
 		}
 	}
 
@@ -155,11 +178,18 @@ public class makeWin extends JFrame {
 				div = false;
 			}
 			mult = true;
-			value = compteur;
+			dot = false;
+			if (lastnb = true)
+				value = compteur;
+			compteur = 0;
 			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
+			sign = " * ";
+			historytmp = history + sign;
+			labelhis.setText(historytmp);
+			lastnb = false;
 		}
 	}
 
@@ -173,12 +203,18 @@ public class makeWin extends JFrame {
 				mod = false;
 			}
 			div = true;
-			value = compteur;
+			if (lastnb = true)
+				value = compteur;
 			compteur = 0;
+			dot = false;
 			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
+			sign = " / ";
+			historytmp = history + sign;
+			labelhis.setText(historytmp);
+			lastnb = false;
 		}
 	}
 
@@ -192,12 +228,18 @@ public class makeWin extends JFrame {
 				div = false;
 			}
 			mod = true;
-			value = compteur;
+			if (lastnb = true)
+				value = compteur;
+			dot = false;
 			compteur = 0;
 			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
+			sign = " % ";
+			historytmp = history + sign;
+			labelhis.setText(historytmp);
+			lastnb = false;
 		}
 	}
 
@@ -233,9 +275,24 @@ public class makeWin extends JFrame {
 			} else
 				value = compteur;
 			Res = Float.toString(value);
-			aft = 1;
-			compteur = value;
+			historytmp = historyfin;
 			label.setText(Res);
+			labelhis.setText(historytmp);
+			plus = false;
+			minus = false;
+			mod = false;
+			div = false;
+			mult = false;
+			dot = false;
+			lastnb = true;
+			compteur = 0;
+			value = 0;
+			aft = 1;
+			sign = "";
+			history = "";
+			historytmp = "";
+			historyfin = "";
+			lastnb = true;
 		}
 	}
 
@@ -258,36 +315,61 @@ public class makeWin extends JFrame {
 			div = false;
 			mult = false;
 			dot = false;
+			lastnb = true;
 			String Res;
 			compteur = 0;
 			value = 0;
 			aft = 1;
 			Res = Float.toString(compteur);
+			sign = "";
+			history = "";
+			historytmp = "";
+			historyfin = "";
 			label.setText(Res);
+			labelhis.setText("");
+			lastnb = true;
 		}
 	}
 
 	public class nbButt0 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
-			if (compteur != 0)
+			historytmp = "";
+			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
+					compteur += 0;
 				} else if (dot == true) {
-					compteur = (float) ((compteur * Math.pow(10, aft)) + 1);
+					compteur = (float) ((compteur * Math.pow(10, aft)));
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			compteur += 0;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = (float) ((compteur / Math.pow(10, aft)));
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 2);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
-			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt1 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -297,17 +379,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 1;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 1;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 1);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt2 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -317,17 +415,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 2;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 2;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 2);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt3 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -337,17 +451,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 3;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 3;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 3);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt4 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -357,17 +487,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 4;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 4;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 4);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt5 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -377,17 +523,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 5;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 5;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 5);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt6 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -397,17 +559,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 6;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 6;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 5);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt7 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -417,17 +595,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 7;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 7;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 7);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt8 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -437,17 +631,33 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 8;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 8;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 8);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 
 	public class nbButt9 implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			historytmp = "";
 			if (compteur != 0) {
 				if (dot == false) {
 					compteur = compteur * 10;
@@ -457,11 +667,26 @@ public class makeWin extends JFrame {
 					compteur = (float) (compteur / Math.pow(10, aft));
 					aft++;
 				}
-			} else
-				compteur = 9;
+			} else if (compteur == 0) {
+				if (dot == false) {
+					compteur = 9;
+				} else {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 9);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
+			}
 			String Res;
 			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
+			if (sign != "") {
+				historyfin = history + sign + Res;
+				labelhis.setText(historyfin);
+			} else {
+				history = Res;
+				labelhis.setText(historytmp);
+			}
+			lastnb = true;
 		}
 	}
 }
