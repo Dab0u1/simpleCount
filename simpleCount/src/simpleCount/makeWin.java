@@ -43,6 +43,7 @@ public class makeWin extends JFrame {
 	private JButton buttreset = new JButton("CE");
 	private float value = 0;
 	private float compteur = 0;
+	private int aft = 1;
 	private boolean dot = false;
 	private boolean plus = false;
 	private boolean minus = false;
@@ -118,6 +119,7 @@ public class makeWin extends JFrame {
 			plus = true;
 			value = compteur;
 			compteur = 0;
+			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
@@ -136,6 +138,7 @@ public class makeWin extends JFrame {
 			minus = true;
 			value = compteur;
 			compteur = 0;
+			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
@@ -153,6 +156,7 @@ public class makeWin extends JFrame {
 			}
 			mult = true;
 			value = compteur;
+			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
@@ -171,6 +175,7 @@ public class makeWin extends JFrame {
 			div = true;
 			value = compteur;
 			compteur = 0;
+			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
@@ -189,6 +194,7 @@ public class makeWin extends JFrame {
 			mod = true;
 			value = compteur;
 			compteur = 0;
+			aft = 1;
 			String Res;
 			Res = Float.toString(value);
 			label.setText(Res);
@@ -227,6 +233,7 @@ public class makeWin extends JFrame {
 			} else
 				value = compteur;
 			Res = Float.toString(value);
+			aft = 1;
 			compteur = value;
 			label.setText(Res);
 		}
@@ -254,6 +261,7 @@ public class makeWin extends JFrame {
 			String Res;
 			compteur = 0;
 			value = 0;
+			aft = 1;
 			Res = Float.toString(compteur);
 			label.setText(Res);
 		}
@@ -263,7 +271,13 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0)
-				compteur = compteur * 10;
+				if (dot == false) {
+					compteur = compteur * 10;
+				} else if (dot == true) {
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 1);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
+				}
 			compteur += 0;
 			String Res;
 			Res = Float.valueOf(compteur).toString();
@@ -279,12 +293,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 1;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					System.out.println(medres);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 1);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 1);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 1;
@@ -302,11 +313,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 2;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 2);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 2);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 2;
@@ -324,11 +333,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 3;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 3);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 3);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 3;
@@ -346,11 +353,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 4;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 4);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 4);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 4;
@@ -368,11 +373,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 5;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 5);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 5);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 5;
@@ -390,11 +393,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 6;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 6);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 6);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 6;
@@ -412,11 +413,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 7;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 7);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 7);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 7;
@@ -434,11 +433,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 8;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 8);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 8);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 8;
@@ -456,11 +453,9 @@ public class makeWin extends JFrame {
 					compteur = compteur * 10;
 					compteur += 9;
 				} else if (dot == true) {
-					String medres = Float.valueOf(compteur).toString();
-					medres = medres.substring(medres.indexOf('.') + 1);
-					int aftdot = Integer.valueOf(medres) + 1;
-					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 9);
-					compteur = (float) (compteur / Math.pow(10, aftdot));
+					compteur = (float) ((compteur * Math.pow(10, aft)) + 9);
+					compteur = (float) (compteur / Math.pow(10, aft));
+					aft++;
 				}
 			} else
 				compteur = 9;
