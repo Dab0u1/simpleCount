@@ -21,6 +21,8 @@ public class makeWin extends JFrame {
 	private JPanel pane = new JPanel();
 	private JPanel result = new JPanel();
 	private JPanel total = new JPanel();
+	private JPanel container = new JPanel();
+	private JLabel label = new JLabel("0");
 	private JButton buttminus = new JButton("-");
 	private JButton buttplus = new JButton("+");
 	private JButton buttmult = new JButton("*");
@@ -40,14 +42,13 @@ public class makeWin extends JFrame {
 	private JButton buttequal = new JButton("=");
 	private JButton buttreset = new JButton("CE");
 	private float value = 0;
+	private float compteur = 0;
+	private boolean dot = false;
 	private boolean plus = false;
 	private boolean minus = false;
 	private boolean mult = false;
 	private boolean div = false;
 	private boolean mod = false;
-	private JPanel container = new JPanel();
-	private JLabel label = new JLabel("0");
-	private float compteur = 0;
 
 	public makeWin() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -234,6 +235,7 @@ public class makeWin extends JFrame {
 	public class dotButt implements ActionListener {
 
 		public void actionPerformed(ActionEvent arg0) {
+			dot = true;
 			String Res;
 			Res = Float.toString(compteur);
 			label.setText(Res);
@@ -248,6 +250,7 @@ public class makeWin extends JFrame {
 			mod = false;
 			div = false;
 			mult = false;
+			dot = false;
 			String Res;
 			compteur = 0;
 			value = 0;
@@ -263,7 +266,7 @@ public class makeWin extends JFrame {
 				compteur = compteur * 10;
 			compteur += 0;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -272,12 +275,21 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 1;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 1;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					System.out.println(medres);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 1);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 1;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -286,12 +298,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 2;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 2;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 2);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 2;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -300,12 +320,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 3;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 3;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 3);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 3;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -314,12 +342,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 4;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 4;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 4);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 4;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -328,12 +364,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 5;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 5;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 5);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 5;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -342,12 +386,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 6;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 6;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 6);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 6;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -356,12 +408,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 7;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 7;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 7);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 7;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -370,12 +430,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 8;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 8;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 8);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 8;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
@@ -384,12 +452,20 @@ public class makeWin extends JFrame {
 
 		public void actionPerformed(ActionEvent arg0) {
 			if (compteur != 0) {
-				compteur = compteur * 10;
-				compteur += 9;
+				if (dot == false) {
+					compteur = compteur * 10;
+					compteur += 9;
+				} else if (dot == true) {
+					String medres = Float.valueOf(compteur).toString();
+					medres = medres.substring(medres.indexOf('.') + 1);
+					int aftdot = Integer.valueOf(medres) + 1;
+					compteur = (float) ((compteur * Math.pow(10, aftdot)) + 9);
+					compteur = (float) (compteur / Math.pow(10, aftdot));
+				}
 			} else
 				compteur = 9;
 			String Res;
-			Res = Float.toString(compteur);
+			Res = Float.valueOf(compteur).toString();
 			label.setText(Res);
 		}
 	}
