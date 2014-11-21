@@ -62,10 +62,6 @@ public class makeWin extends JFrame {
 		this.setTitle("simpleCount");
 		this.setSize(300, 300);
 		this.setLocationRelativeTo(null);
-		// Font policehis = new Font("Tahoma", Font.BOLD, 6);
-		// labelhis.setFont(policehis);
-		// labelhis.setForeground(Color.BLUE);
-		// labelhis.setHorizontalAlignment(JLabel.EAST);
 		Font policelab = new Font("Tahoma", Font.BOLD, 16);
 		label.setFont(policelab);
 		label.setForeground(Color.BLUE);
@@ -129,7 +125,7 @@ public class makeWin extends JFrame {
 			}
 			plus = true;
 			dot = false;
-			if (lastnb = true)
+			if (lastnb == true)
 				value = compteur;
 			compteur = 0;
 			aft = 1;
@@ -154,7 +150,7 @@ public class makeWin extends JFrame {
 			}
 			minus = true;
 			dot = false;
-			if (lastnb = true)
+			if (lastnb == true)
 				value = compteur;
 			compteur = 0;
 			aft = 1;
@@ -179,7 +175,7 @@ public class makeWin extends JFrame {
 			}
 			mult = true;
 			dot = false;
-			if (lastnb = true)
+			if (lastnb == true)
 				value = compteur;
 			compteur = 0;
 			aft = 1;
@@ -203,7 +199,7 @@ public class makeWin extends JFrame {
 				mod = false;
 			}
 			div = true;
-			if (lastnb = true)
+			if (lastnb == true)
 				value = compteur;
 			compteur = 0;
 			dot = false;
@@ -228,7 +224,7 @@ public class makeWin extends JFrame {
 				div = false;
 			}
 			mod = true;
-			if (lastnb = true)
+			if (lastnb == true)
 				value = compteur;
 			dot = false;
 			compteur = 0;
@@ -316,16 +312,14 @@ public class makeWin extends JFrame {
 			mult = false;
 			dot = false;
 			lastnb = true;
-			String Res;
 			compteur = 0;
 			value = 0;
 			aft = 1;
-			Res = Float.toString(compteur);
 			sign = "";
 			history = "";
 			historytmp = "";
 			historyfin = "";
-			label.setText(Res);
+			label.setText("");
 			labelhis.setText("");
 			lastnb = true;
 		}
@@ -354,7 +348,13 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
+			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
 				labelhis.setText(historyfin);
@@ -389,7 +389,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -425,7 +430,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -461,7 +471,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -497,7 +512,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -533,7 +553,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -569,7 +594,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -605,7 +635,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -641,7 +676,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
@@ -677,7 +717,12 @@ public class makeWin extends JFrame {
 				}
 			}
 			String Res;
-			Res = Float.valueOf(compteur).toString();
+			if (dot != true) {
+				int comptint = (int) compteur;
+				Res = Integer.toString(comptint);
+			} else {
+				Res = Float.valueOf(compteur).toString();
+			}
 			label.setText(Res);
 			if (sign != "") {
 				historyfin = history + sign + Res;
